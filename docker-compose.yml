@@ -21,9 +21,9 @@ services:
     ports:
       - ${HOST_IP}:${HOST_DB_PORT}:3306
     environment:
-      - MARIADB_ROOT_PASSWORD: ${DB_ROOT_PWD}
-      - MARIADB_USER: ${DB_USER}
-      - MARIADB_PASSWORD: ${DB_PWD}
+      - MARIADB_ROOT_PASSWORD=${DB_ROOT_PWD}
+      - MARIADB_USER=${DB_USER}
+      - MARIADB_PASSWORD=${DB_PWD}
 
 volumes:
   dbdata:
