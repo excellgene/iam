@@ -4,6 +4,12 @@ All credits goes to [SNIPE-IT](https://github.com/snipe/snipe-it)
 
 #  Installation 
 
+## Config
+
+   cp .env.exemple .env
+   
+Fill every env var for so everyhting work fine.
+
 ## Requirement
 
 * [Docker](https://www.docker.com/)
