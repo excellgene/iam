@@ -42,7 +42,7 @@ services:
     restart: unless-stopped
     volumes:
       - .docker/db/init.sh:/docker-entrypoint-initdb.d/init.sh
-      - dbdata:/var/lib/mysql
+      - snipeitdata:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=${DB_ROOT_PWD}
       - MYSQL_DATABASE=${DB_NAME}
@@ -58,7 +58,7 @@ services:
       start_period: 30s
 
 volumes:
-  dbdata:
+  snipeitdata:
 
 networks:
   app_network:
