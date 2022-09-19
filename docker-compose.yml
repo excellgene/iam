@@ -4,6 +4,7 @@ services:
   app:
     image: snipe/snipe-it:latest
     container_name: app
+    restart: unless-stopped
     depends_on:
       - db
     environment:
@@ -28,15 +29,20 @@ services:
       - ${HOST_IP}:${HOST_HTTPS_PORT}:443
     networks:
       - app_network
+    healthcheck:
+      test: "curl --fail http://localhost || exit 1"
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
 
   db:
     image: mariadb:latest
     container_name: db
     restart: unless-stopped
     volumes:
+      - .docker/db/init.sh:/docker-entrypoint-initdb.d/init.sh
       - dbdata:/var/lib/mysql
-      - .docker/  
-      - .docker/db/init_db.sh:/docker-entrypoint-initdb.d/init.sql
     environment:
       - MYSQL_ROOT_PASSWORD=${DB_ROOT_PWD}
       - MYSQL_DATABASE=${DB_NAME}
@@ -44,6 +50,12 @@ services:
       - MYSQL_PASSWORD={DB_PWD}
     networks:
       - app_network
+    healthcheck:
+      test: "mysqladmin ping -h 127.0.0.1 -uroot -p${DB_ROOT_PWD} || exit 1"
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
 
 volumes:
   dbdata:
