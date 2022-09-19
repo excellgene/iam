@@ -6,7 +6,7 @@ All credits goes to [SNIPE-IT](https://github.com/snipe/snipe-it)
 
 ## Config
 
-   cp .env.exemple .env
+    cp .env.exemple .env
    
 Fill every env var for so everyhting work fine.
 
