@@ -8,7 +8,7 @@ All credits goes to [SNIPE-IT](https://github.com/snipe/snipe-it)
 
     cp .env.exemple .env
    
-Fill every env var for so everyhting work fine.
+Fill every env var so everyhting work fine.
 
 ## Requirement
 
